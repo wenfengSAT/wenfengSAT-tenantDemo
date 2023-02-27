@@ -4,7 +4,7 @@
 
 	<resultMap id="orderResultMap" type="com.example.demo.entity.Order">
 		<id column="id" property="id" />
-		<result column="name" property="name" />
+		<result column="name" property="name" typeHandler="com.example.demo.handler.EncryptHandler"/>
 		<result column="tenant_id" property="tenantId" />
 		<result column="shop_id" property="shopId" />
 	</resultMap>

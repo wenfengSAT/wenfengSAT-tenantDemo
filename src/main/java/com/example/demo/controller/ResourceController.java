@@ -4,6 +4,8 @@ import com.example.demo.config.tenant.TenantContextHolder;
 import com.example.demo.entity.Order;
 import com.example.demo.service.OrderService;
 
+import cn.hutool.core.util.RandomUtil;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ public class ResourceController {
 	// http://localhost:8080/api/list
 	@GetMapping("/list")
 	public List<Order> list() throws Exception {
+		TenantContextHolder.setTenantId("1");
 		return orderService.list();
 	}
 
@@ -33,6 +36,16 @@ public class ResourceController {
 	public Order detail(@PathVariable long id) {
 		TenantContextHolder.setTenantId("1");
 		return orderService.getById(id);
+	}
+
+	// http://localhost:8080/api/insert
+	@GetMapping("/insert")
+	public void insert() {
+		TenantContextHolder.setTenantId("1");
+		Order order = new Order();
+		order.setName("N" + RandomUtil.randomNumbers(5));
+		order.setShopId("S" + RandomUtil.randomNumbers(5));
+		orderService.save(order);
 	}
 
 }

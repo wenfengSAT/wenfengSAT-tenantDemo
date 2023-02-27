@@ -19,12 +19,16 @@ mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.example.demo.entity
+  #自定义类型处理器包路径
+  type-handlers-package: com.example.demo.handler
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
-  #  global-config:
-  #    db-config:
-  #      id-type: INPUT
-
+  global-config:
+    sql-parser-cache: true
+    banner: false
+    db-config:
+      id-type: auto
+  
 
   #多租户配置
 tenant:
