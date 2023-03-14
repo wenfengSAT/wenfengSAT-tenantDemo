@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package com.example.demo;
+
+option java_package = "com.example.demo.proto";
+option java_outer_classname = "CreateOrderProto";
+
+message CreateOrderReq {
+	string address = 1;
+    repeated Sku skus = 2;
+}
+
+message CreateOrderResp {
+    string orderId = 1;
+    repeated OrderItem orderItem = 2;
+}
+
+message Sku {
+    string skuId = 1;
+    sint32 count = 2;
+}
+
+message OrderItem {
+    string itemId = 1;
+    string name = 2;
+}

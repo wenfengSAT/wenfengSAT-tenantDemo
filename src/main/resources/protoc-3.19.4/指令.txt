@@ -1,0 +1,17 @@
+﻿./protoc.exe --java_out . createOrder.proto
+
+
+
+
+
+proto类型	Java 类型	备注
+int32		int			使用可变长度编码。 编码负数的效率低 - 如果您的字段可能有负值，请改用sint32。
+int64		long		使用可变长度编码。 编码负数的效率低 - 如果您的字段可能有负值，请改用sint64。
+sint32		int			使用可变长编码方式。有符号的整型值。编码时比通常的int32高效。
+sint64		long		使用可变长编码方式。有符号的整型值。编码时比通常的int64高效。
+float		float	
+double		double	
+bool		boolean	
+string		String		一个字符串必须是UTF-8编码或者7-bit ASCII编码的文本。
+
+
