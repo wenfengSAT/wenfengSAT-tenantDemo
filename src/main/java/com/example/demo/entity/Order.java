@@ -1,9 +1,11 @@
 package com.example.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.example.demo.handler.EncryptHandler;
 
 import lombok.*;
 
@@ -20,6 +22,8 @@ public class Order extends Model<Order> {
 	@TableId(value = "id", type = IdType.AUTO)
 	private Long id;
 
+	// 加解密示例
+	@TableField(typeHandler = EncryptHandler.class)
 	private String name;
 
 	private String tenantId;
