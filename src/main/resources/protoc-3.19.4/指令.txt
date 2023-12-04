@@ -15,3 +15,7 @@ bool		boolean
 string		String		一个字符串必须是UTF-8编码或者7-bit ASCII编码的文本。
 
 
+
+
+限定修饰符说明 
+repeated 代表可重复，我们可以理解为数组

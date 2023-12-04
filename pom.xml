@@ -92,6 +92,13 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
+		
+		<!--  forest 依赖 -->
+		<dependency>
+			<groupId>com.dtflys.forest</groupId>
+			<artifactId>forest-spring-boot-starter</artifactId>
+			<version>1.5.32</version>
+		</dependency>
 
 	</dependencies>
 
