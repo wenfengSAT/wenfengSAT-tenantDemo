@@ -32,7 +32,25 @@ spring:
     clean-disabled: true
     # 校验
     validate-on-migrate: true
+  redis:
+    host: 10.219.8.30
+    port: 6379
+    password: Aa!@#123456.Hz
+    database: 1
+    lettuce:
+      cluster:
+        refresh:
+          # 自适应拓扑刷新
+          adaptive: true
+          # 群集拓扑刷新周期
+          period: 60s
+  # 分布式锁 https://gitee.com/baomidou/lock4j
+  lock4j:
+    acquire-timeout: 3000 #默认值，可不设置
+    expire: 30000 #默认值，可不设置
+    primary-executor: com.baomidou.lock.executor.RedisTemplateLockExecutor #默认redisson>redisTemplate>zookeeper
 
+# https://baomidou.com/introduce/
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
@@ -48,7 +66,7 @@ mybatis-plus:
       id-type: auto
   
 
-  #多租户配置
+#多租户配置 https://baomidou.com/plugins/tenant/
 tenant:
   tenantIdColumn: tenant_id
   tenantTables:
