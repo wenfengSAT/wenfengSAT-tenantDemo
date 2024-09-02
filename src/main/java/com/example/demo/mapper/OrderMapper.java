@@ -11,6 +11,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderMapper extends BaseMapper<Order> {
 	
+	/**
+	 * 
+	 * @Description： 忽略多租户
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年9月2日上午11:27:50]
+	 * @return
+	 *
+	 */
 	@InterceptorIgnore(tenantLine = "true")
 	List<Order> selectist();
 
