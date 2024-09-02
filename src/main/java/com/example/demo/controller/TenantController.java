@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.baomidou.mybatisplus.core.plugins.IgnoreStrategy;
+import com.baomidou.mybatisplus.core.plugins.InterceptorIgnoreHelper;
 import com.example.demo.config.tenant.TenantContextHolder;
 import com.example.demo.entity.Order;
 import com.example.demo.service.OrderService;
@@ -31,6 +33,17 @@ public class TenantController {
 	public List<Order> list() throws Exception {
 		TenantContextHolder.setTenantId("1");
 		return orderService.list();
+	}
+
+	// http://localhost:8080/api/admin/list
+	@GetMapping("/admin/list")
+	public List<Order> adminList() throws Exception {
+		// 设置忽略租户插件
+		InterceptorIgnoreHelper.handle(IgnoreStrategy.builder().tenantLine(true).build());
+		List<Order> list = orderService.list();
+		// 关闭忽略策略
+		InterceptorIgnoreHelper.clearIgnoreStrategy();
+		return list;
 	}
 
 	// http://localhost:8080/api/listNoTenant
