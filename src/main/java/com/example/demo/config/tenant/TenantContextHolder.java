@@ -4,6 +4,14 @@ import com.alibaba.ttl.TransmittableThreadLocal;
 
 import lombok.experimental.UtilityClass;
 
+/**
+ * 
+ * @Description： 租户ID在内存里的管理
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:54:23]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @UtilityClass
 public class TenantContextHolder {
 

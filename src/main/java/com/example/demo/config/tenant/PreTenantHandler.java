@@ -12,10 +12,18 @@ import net.sf.jsqlparser.expression.StringValue;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @Description： 多租户SQL处理
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:55:41]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @Builder
-@AllArgsConstructor
 @Slf4j
 @Component
+@AllArgsConstructor
 public class PreTenantHandler implements TenantLineHandler {
 
 	private final PreTenantConfigProperties configProperties;

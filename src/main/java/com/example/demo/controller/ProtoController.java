@@ -16,7 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.proto.CreateOrderProto;
 import com.example.demo.service.ProtobufService;
 
-
+/**
+ * 
+ * @Description： proto协议示例
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:56:39]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @RestController
 @RequestMapping("/proto")
 public class ProtoController {

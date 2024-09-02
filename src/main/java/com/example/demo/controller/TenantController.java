@@ -11,6 +11,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 
+ * @Description： 多租户示例
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:57:01]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @RequestMapping("/api")
 @RestController
 public class TenantController {

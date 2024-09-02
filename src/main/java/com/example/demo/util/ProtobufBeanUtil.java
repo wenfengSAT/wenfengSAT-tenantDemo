@@ -7,6 +7,14 @@ import com.google.protobuf.util.JsonFormat;
 import javax.validation.constraints.NotNull;
 import java.io.IOException;
 
+/**
+ * 
+ * @Description： Protobuf与实体对象转换
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:58:22]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 public class ProtobufBeanUtil {
 
 	private ProtobufBeanUtil() {

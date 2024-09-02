@@ -12,6 +12,14 @@ import com.example.demo.entity.Order;
 
 import cn.hutool.core.util.ObjectUtil;
 
+/**
+ * 
+ * @Description： 分布式锁
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:56:22]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @RestController
 @RequestMapping("/api")
 public class LockController {

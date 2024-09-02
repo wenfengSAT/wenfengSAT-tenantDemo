@@ -6,6 +6,14 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.dtflys.forest.springboot.annotation.ForestScan;
 
+/**
+ * 
+ * @Description： 主程序
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:51:05]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.example.demo.**" })
 @ForestScan(basePackages = "com.example.demo.**")

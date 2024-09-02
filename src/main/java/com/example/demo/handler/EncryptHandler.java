@@ -15,6 +15,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * 
+ * @Description： 使用mybatis-plus实现加解密
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:57:25]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @Slf4j
 @MappedTypes({ String.class })
 @MappedJdbcTypes(JdbcType.VARCHAR)

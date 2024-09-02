@@ -9,6 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 
+ * @Description： mybatis plus配置
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:53:49]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @Configuration
 @MapperScan("com.example.demo.mapper")
 public class MybatisPlugConfig {
