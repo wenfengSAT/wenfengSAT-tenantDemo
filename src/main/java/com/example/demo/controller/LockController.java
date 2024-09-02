@@ -9,12 +9,14 @@ import com.baomidou.lock.LockInfo;
 import com.baomidou.lock.LockTemplate;
 import com.baomidou.lock.annotation.Lock4j;
 import com.example.demo.entity.Order;
+import com.example.demo.entity.Shop;
+import com.example.demo.mapper.ShopMapper;
 
 import cn.hutool.core.util.ObjectUtil;
 
 /**
  * 
- * @Description： 分布式锁
+ * @Description： 锁
  * 
  * @author [ wenfengSAT@163.com ] on [2024年9月2日上午10:56:22]
  * @Modified By： [修改人] on [修改日期] for [修改说明]
@@ -27,8 +29,40 @@ public class LockController {
 	@Autowired
 	private LockTemplate lockTemplate;
 
-	@GetMapping("/lock/test")
-	public String lock() {
+	@Autowired
+	private ShopMapper shopMapper;
+
+	/**
+	 * 
+	 * @Description： 乐观锁
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年9月2日下午12:12:25]
+	 * @param shop
+	 * @return
+	 *
+	 */
+	@GetMapping("/lock/logic")
+	public String logic(Shop shop) {
+		int result = shopMapper.updateById(shop);
+		if (result > 0) {
+			return "unlock...";
+		}
+		return "lock...";
+	}
+
+	/**
+	 * 
+	 * @Description： 分布式锁
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年9月2日上午11:58:00]
+	 * @param order
+	 * @return
+	 *
+	 */
+	@GetMapping("/lock/lock4j")
+	public String lock4j(Order order) {
 		// 获取锁,过期时间(10000ms) 防止死锁, 尝试获取锁超时时间(1000ms)
 		final LockInfo lockInfo = lockTemplate.lock("testKey", 10000L, 1000L);
 		if (ObjectUtil.isNull(lockInfo)) {

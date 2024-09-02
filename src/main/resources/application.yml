@@ -64,6 +64,10 @@ mybatis-plus:
     banner: false
     db-config:
       id-type: auto
+      # https://baomidou.com/guides/logic-delete/
+      logic-delete-field: deleted # 全局逻辑删除字段名
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
   
 
 #多租户配置 https://baomidou.com/plugins/tenant/

@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import com.example.demo.config.tenant.PreTenantHandler;
 
@@ -34,6 +35,8 @@ public class MybatisPlugConfig {
 		TenantLineInnerInterceptor tenantLineInnerInterceptor = new TenantLineInnerInterceptor();
 		tenantLineInnerInterceptor.setTenantLineHandler(preTenantHandler);
 		mybatisPlusInterceptor.addInnerInterceptor(tenantLineInnerInterceptor);
+		// 乐观锁插件
+		mybatisPlusInterceptor.addInnerInterceptor(new OptimisticLockerInnerInterceptor());
 		return mybatisPlusInterceptor;
 	}
 
