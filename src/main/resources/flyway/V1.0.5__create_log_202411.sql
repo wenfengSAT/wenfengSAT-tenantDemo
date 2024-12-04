@@ -1,0 +1,7 @@
+
+CREATE TABLE `tb_log_202411` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `body` varchar(255) NOT NULL DEFAULT '' COMMENT '内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='日志';
+
