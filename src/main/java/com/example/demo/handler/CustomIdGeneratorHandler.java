@@ -10,6 +10,14 @@ import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * @Description： ID生成器
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年12月5日下午2:28:54]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @Slf4j
 @Component
 public class CustomIdGeneratorHandler implements IdentifierGenerator {

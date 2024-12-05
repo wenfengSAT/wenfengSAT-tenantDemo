@@ -24,6 +24,7 @@ public class UrlController {
 	 * @Date [2024年8月13日上午10:17:04]
 	 * @return
 	 *
+	 * @Url http://localhost:8080/url/redirect
 	 */
 	@RequestMapping("redirect")
 	public ModelAndView redirect() {

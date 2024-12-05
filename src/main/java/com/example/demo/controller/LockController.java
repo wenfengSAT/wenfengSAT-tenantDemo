@@ -23,7 +23,7 @@ import cn.hutool.core.util.ObjectUtil;
  *
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/lock")
 public class LockController {
 
 	@Autowired
@@ -41,8 +41,9 @@ public class LockController {
 	 * @param shop
 	 * @return
 	 *
+	 * @Url http://localhost:8080/lock/logic
 	 */
-	@GetMapping("/lock/logic")
+	@GetMapping("/logic")
 	public String logic(Shop shop) {
 		int result = shopMapper.updateById(shop);
 		if (result > 0) {
@@ -60,8 +61,9 @@ public class LockController {
 	 * @param order
 	 * @return
 	 *
+	 * @Url http://localhost:8080/lock/lock4j
 	 */
-	@GetMapping("/lock/lock4j")
+	@GetMapping("/lock4j")
 	public String lock4j(Order order) {
 		// 获取锁,过期时间(10000ms) 防止死锁, 尝试获取锁超时时间(1000ms)
 		final LockInfo lockInfo = lockTemplate.lock("testKey", 10000L, 1000L);

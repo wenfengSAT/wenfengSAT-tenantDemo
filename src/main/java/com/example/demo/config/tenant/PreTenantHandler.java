@@ -1,7 +1,6 @@
 package com.example.demo.config.tenant;
 
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
-import com.example.demo.config.tenant.PreTenantConfigProperties;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.*;

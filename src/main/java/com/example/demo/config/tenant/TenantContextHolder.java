@@ -18,25 +18,37 @@ public class TenantContextHolder {
 	private final ThreadLocal<String> THREAD_LOCAL_TENANT = new TransmittableThreadLocal<>();
 
 	/**
-	 * TTL 设置租户ID
-	 *
+	 * 
+	 * @Description： TTL 设置租户ID
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:14:34]
 	 * @param tenantId
+	 *
 	 */
 	public void setTenantId(String tenantId) {
 		THREAD_LOCAL_TENANT.set(tenantId);
 	}
 
 	/**
-	 * 获取TTL中的租户ID
-	 *
+	 * 
+	 * @Description： 获取TTL中的租户ID
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:14:44]
 	 * @return
+	 *
 	 */
 	public String getTenantId() {
 		return THREAD_LOCAL_TENANT.get();
 	}
 
 	/**
-	 * 删除TTL中的租户ID
+	 * 
+	 * @Description： 删除TTL中的租户ID
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:14:51]
 	 *
 	 */
 	public void clear() {

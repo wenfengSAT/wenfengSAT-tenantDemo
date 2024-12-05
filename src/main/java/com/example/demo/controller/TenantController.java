@@ -28,14 +28,34 @@ public class TenantController {
 	@Autowired
 	private OrderService orderService;
 
-	// http://localhost:8080/tenant/list
+	/**
+	 * 
+	 * @Description： 租户列表查询
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:23:52]
+	 * @return
+	 * @throws Exception
+	 *
+	 * @Url http://localhost:8080/tenant/list
+	 */
 	@GetMapping("/list")
 	public List<Order> list() throws Exception {
 		TenantContextHolder.setTenantId("1");
 		return orderService.list();
 	}
 
-	// http://localhost:8080/tenant/admin/list
+	/**
+	 * 
+	 * @Description： 测试忽略租户插件
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:23:52]
+	 * @return
+	 * @throws Exception
+	 *
+	 * @Url http://localhost:8080/tenant/admin/list
+	 */
 	@GetMapping("/admin/list")
 	public List<Order> adminList() throws Exception {
 		// 设置忽略租户插件
@@ -46,20 +66,50 @@ public class TenantController {
 		return list;
 	}
 
-	// http://localhost:8080/tenant/listNoTenant
+	/**
+	 * 
+	 * @Description： 测试无租户
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:23:52]
+	 * @return
+	 * @throws Exception
+	 *
+	 * @Url http://localhost:8080/tenant/listNoTenant
+	 */
 	@GetMapping("/listNoTenant")
 	public List<Order> listNoTenant() throws Exception {
 		return orderService.selectist();
 	}
 
-	// http://localhost:8080/tenant/detail/1
+	/**
+	 * 
+	 * @Description： 测试租户查询
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:23:52]
+	 * @return
+	 * @throws Exception
+	 *
+	 * @Url http://localhost:8080/tenant/detail/1
+	 */
 	@GetMapping("/detail/{id}")
 	public Order detail(@PathVariable long id) {
 		TenantContextHolder.setTenantId("1");
 		return orderService.getById(id);
 	}
 
-	// http://localhost:8080/enant/insert
+	/**
+	 * 
+	 * @Description： 测试数据插入
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:23:52]
+	 * @return
+	 * @throws Exception
+	 *
+	 * @Url http://localhost:8080/tenant/insert
+	 */
 	@GetMapping("/insert")
 	public void insert() {
 		TenantContextHolder.setTenantId("1");

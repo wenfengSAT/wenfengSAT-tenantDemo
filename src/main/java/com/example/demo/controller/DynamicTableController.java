@@ -12,6 +12,14 @@ import com.example.demo.handler.MonthTableNameHandler;
 import com.example.demo.mapper.LogMapper;
 import com.example.demo.service.LogService;
 
+/**
+ * 
+ * @Description： mybatisplus动态表示例
+ * 
+ * @author [ wenfengSAT@163.com ] on [2024年12月5日下午2:15:11]
+ * @Modified By： [修改人] on [修改日期] for [修改说明]
+ *
+ */
 @RestController
 @RequestMapping("/table")
 public class DynamicTableController {
@@ -21,14 +29,34 @@ public class DynamicTableController {
 	@Autowired
 	private LogService logService;
 
-	// http://localhost:8080/table/default
+	/**
+	 * 
+	 * @Description： 测试默认情况
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:15:37]
+	 * @return
+	 * @throws Exception
+	 *
+	 * @Url http://localhost:8080/table/default
+	 */
 	@GetMapping("/default")
 	public List<Log> testDefault() throws Exception {
 		List<Log> list = logService.list();
 		return list;
 	}
 
-	// http://localhost:8080/table/insert
+	/**
+	 * 
+	 * @Description： 测试手动指定分表日期
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:15:37]
+	 * @return
+	 * @throws Exception
+	 *
+	 * @Url http://localhost:8080/table/insert
+	 */
 	@GetMapping("/insert")
 	public String insert() throws Exception {
 		MonthTableNameHandler.setData("202411");
@@ -39,7 +67,17 @@ public class DynamicTableController {
 		return "SUCCESS";
 	}
 
-	// http://localhost:8080/table/list
+	/**
+	 * 
+	 * @Description： 测试查询
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:15:37]
+	 * @return
+	 * @throws Exception
+	 *
+	 * @Url http://localhost:8080/table/list
+	 */
 	@GetMapping("/list")
 	public List<Log> list() throws Exception {
 		MonthTableNameHandler.setData("202411");

@@ -62,7 +62,7 @@ public class EncryptHandler extends BaseTypeHandler<String> {
 	 */
 	@Override
 	public String getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-		System.err.println("getNullableResult...");
+		log.info("getNullableResult...");
 		return decrypt(rs.getString(columnIndex));
 	}
 
@@ -71,7 +71,7 @@ public class EncryptHandler extends BaseTypeHandler<String> {
 	 */
 	@Override
 	public String getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-		System.err.println("getNullableResult...");
+		log.info("getNullableResult...");
 		return decrypt(cs.getString(columnIndex));
 	}
 

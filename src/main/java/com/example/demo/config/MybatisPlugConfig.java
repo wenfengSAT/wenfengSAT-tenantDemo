@@ -28,7 +28,13 @@ public class MybatisPlugConfig {
 	private PreTenantHandler preTenantHandler;
 
 	/**
-	 * mybatis plus 拦截器各组件配置
+	 * 
+	 * @Description： mybatis plus 拦截器各组件配置
+	 * 
+	 * @author [ wenfengSAT@163.com ]
+	 * @Date [2024年12月5日下午2:12:58]
+	 * @return
+	 *
 	 */
 	@Bean
 	public MybatisPlusInterceptor mybatisPlusInterceptor() {
