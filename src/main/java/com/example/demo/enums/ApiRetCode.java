@@ -13,7 +13,7 @@ import lombok.Getter;
  *
  */
 @Getter
-public enum ApigateRetCode implements CodeEnum {
+public enum ApiRetCode implements CodeEnum {
 
 	
 	/**
@@ -36,7 +36,7 @@ public enum ApigateRetCode implements CodeEnum {
 	private int code;
 	private String msg;
 
-	ApigateRetCode(int code, String msg) {
+	ApiRetCode(int code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}

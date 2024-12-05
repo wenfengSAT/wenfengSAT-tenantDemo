@@ -21,6 +21,7 @@
 		<protobuf.version.format>1.4</protobuf.version.format>
 		<alibaba-thread-local>2.2.0</alibaba-thread-local>
 		<lock4j.version>2.2.7</lock4j.version>
+		<sentinel.version>1.8.0</sentinel.version>
 
 	</properties>
 	<dependencies>
@@ -134,6 +135,23 @@
 			<groupId>com.baomidou</groupId>
 			<artifactId>lock4j-zookeeper-spring-boot-starter</artifactId>
 			<version>${lock4j.version}</version>
+		</dependency>
+
+		<!-- Sentinel adapter and transport -->
+		<dependency>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-core</artifactId>
+			<version>${sentinel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-dubbo-adapter</artifactId>
+			<version>${sentinel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-annotation-aspectj</artifactId>
+			<version>${sentinel.version}</version>
 		</dependency>
 	</dependencies>
 

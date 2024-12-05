@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.demo.enums.ApigateRetCode;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowException;
+import com.example.demo.enums.ApiRetCode;
 import com.example.demo.exception.BaseException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -49,20 +51,26 @@ public class ApiExceptionHandler {
 	@ExceptionHandler(value = Exception.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public Map<String, Object> handlerException(Exception e) {
-		log.error("ApiExceptionHandler.handlerException msg:[{}]", e);
+		log.error("ApiExceptionHandler.handlerException msg:{}", e);
 		Map<String, Object> result = new HashMap<>();
-		if (e instanceof HttpRequestMethodNotSupportedException) {
-			result.put(RESULTCODE, ApigateRetCode.REQUESTMETHODNOTSUPPORTED.getCode());
-			result.put(RESULTDESC, ApigateRetCode.REQUESTMETHODNOTSUPPORTED.getMsg());
+		if (e instanceof BlockException || e.getCause() instanceof FlowException) {
+			result.put(RESULTCODE, ApiRetCode.BUSY_SERVICE_EXCEPTION.getCode());
+			result.put(RESULTDESC, ApiRetCode.BUSY_SERVICE_EXCEPTION.getMsg());
+		} else if (e instanceof FlowException || e.getCause() instanceof FlowException) {
+			result.put(RESULTCODE, ApiRetCode.BUSY_SERVICE_EXCEPTION.getCode());
+			result.put(RESULTDESC, ApiRetCode.BUSY_SERVICE_EXCEPTION.getMsg());
+		} else if (e instanceof HttpRequestMethodNotSupportedException) {
+			result.put(RESULTCODE, ApiRetCode.REQUESTMETHODNOTSUPPORTED.getCode());
+			result.put(RESULTDESC, ApiRetCode.REQUESTMETHODNOTSUPPORTED.getMsg());
 		} else if (e instanceof HttpMediaTypeNotSupportedException) {
-			result.put(RESULTCODE, ApigateRetCode.MEDIATYPENOTSUPPORTED.getCode());
-			result.put(RESULTDESC, ApigateRetCode.MEDIATYPENOTSUPPORTED.getMsg());
+			result.put(RESULTCODE, ApiRetCode.MEDIATYPENOTSUPPORTED.getCode());
+			result.put(RESULTDESC, ApiRetCode.MEDIATYPENOTSUPPORTED.getMsg());
 		} else if (e instanceof BaseException) {
 			result.put(RESULTCODE, String.valueOf(((BaseException) e).getResponseEnum().getCode()));
 			result.put(RESULTDESC, ((BaseException) e).getMessage());
 		} else {
-			result.put(RESULTCODE, ApigateRetCode.SYSTEM_EXCEPTION.getCode());
-			result.put(RESULTDESC, ApigateRetCode.SYSTEM_EXCEPTION.getMsg());
+			result.put(RESULTCODE, ApiRetCode.SYSTEM_EXCEPTION.getCode());
+			result.put(RESULTDESC, ApiRetCode.SYSTEM_EXCEPTION.getMsg());
 		}
 		return result;
 	}
@@ -85,7 +93,7 @@ public class ApiExceptionHandler {
 			errorMesssage.append(fieldError.getDefaultMessage()).append(",");
 		}
 		Map<String, Object> context = new HashMap<>();
-		context.put(RESULTCODE, ApigateRetCode.ERROR_PARAM.getCode());
+		context.put(RESULTCODE, ApiRetCode.ERROR_PARAM.getCode());
 		context.put(RESULTDESC, errorMesssage.toString());
 		return context;
 	}
