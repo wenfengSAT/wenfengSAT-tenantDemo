@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,9 @@ import lombok.Setter;
 @RestController
 @RequestMapping("/api")
 public class ApiController {
+
+	@Autowired
+	private StringRedisTemplate redisTemplate;
 
 	/**
 	 * 请求过期时间-60s
@@ -43,6 +48,10 @@ public class ApiController {
 		}
 		if (!checkSign(req)) {
 			return "tampered";
+		}
+		String traceId = req.getTraceId();
+		if (!checkTrace(traceId)) {
+			return "repeated";
 		}
 		return "success";
 	}
@@ -73,6 +82,20 @@ public class ApiController {
 	 */
 	private boolean checkSign(SecurityReq req) {
 		return true;
+	}
+
+	/**
+	 * 
+	 * @Description： 防短时间内的重放攻击
+	 * 
+	 * @author [ Wenfeng.Huang@desaysv.com ]
+	 * @Date [2024年12月6日下午3:31:57]
+	 * @param traceId
+	 * @return
+	 *
+	 */
+	private boolean checkTrace(String traceId) {
+		return redisTemplate.hasKey(traceId);
 	}
 
 	@Setter
