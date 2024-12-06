@@ -153,6 +153,14 @@
 			<artifactId>sentinel-annotation-aspectj</artifactId>
 			<version>${sentinel.version}</version>
 		</dependency>
+		
+		<!--jasypt在线加解密：https://lotabout.me/jasypt-online/-->
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

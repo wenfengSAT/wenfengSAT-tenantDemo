@@ -9,7 +9,8 @@ spring:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
-      password: 123456
+      # password: 123456
+      password: ENC(P2//8F03VEdZDp7w+jMU6A==)
       url: jdbc:mysql://127.0.0.1:3306/mybatis_plus?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&allowMultiQueries=true&allowPublicKeyRetrieval=true
       stat-view-servlet:
         enabled: true
@@ -35,7 +36,8 @@ spring:
   redis:
     host: 10.219.8.30
     port: 6379
-    password: Aa!@#123456.Hz
+    # password: Aa!@#123456.Hz
+    password: ENC(P5iJj8LQS9kTu4JEfvQucfbAwJnyUMaA)
     database: 1
     lettuce:
       cluster:
@@ -76,3 +78,11 @@ tenant:
   tenantTables:
     # 租户表维护
     - tb_order
+
+    
+# 如果密文加盐，需要配置盐值
+jasypt:
+  encryptor:
+    password: tenant
+    
+    
