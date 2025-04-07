@@ -1,5 +1,6 @@
 package com.example.demo.handler;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -79,7 +80,7 @@ public class EncryptHandler extends BaseTypeHandler<String> {
 	 * 获取值
 	 */
 	private String encrypt(String value) {
-		if (null == value) {
+		if (StrUtil.isBlank(value)) {
 			return null;
 		}
 		String encrypt = null;
@@ -95,7 +96,7 @@ public class EncryptHandler extends BaseTypeHandler<String> {
 	 * 获取值
 	 */
 	public String decrypt(String value) {
-		if (null == value) {
+		if (StrUtil.isBlank(value)) {
 			return null;
 		}
 		String decrypt = null;
